@@ -114,7 +114,7 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = "Contact Me"
+    { title = "Blog"
     , body =
         blogView
         |> Element.layout [Background.color Colors.black]
