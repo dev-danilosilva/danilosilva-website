@@ -185,7 +185,7 @@ presentationCardView =
             ]
         elements =
             [ subtitleView "Software Engineering, Functional Programming and Other Stuff"
-            , mainTitle "Danilo Silva"
+            , mainTitle "~$ Danilo Silva"
             , menuView
             ]
     in
