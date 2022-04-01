@@ -13,12 +13,6 @@ import Element.Background as Background
 import Element.Font as Font
 import Lib.Colors as Colors
 
--- In this page there are going to be some highlights to my blog posts through different
--- blog projects.
--- Some of the comming projects are:
---    -> pynosso.com
---    -> devfuncional.com
---
 
 type alias Model =
     ()

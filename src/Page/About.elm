@@ -38,8 +38,6 @@ type alias Data =
     , portfolioHighlights : List String
     }
 
--- This page are going to inform my professional career track, open source project links,
--- social media links
 
 data : DataSource Data
 data =
