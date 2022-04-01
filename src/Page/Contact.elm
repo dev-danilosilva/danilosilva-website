@@ -84,8 +84,9 @@ contactView =
             [ el [Font.size 35, centerX] <| text "Coming Soon"
             , link 
                 [ Font.size 20
-                 , centerY
-                 , mouseOver
+                , centerX
+                , centerY
+                , mouseOver
                     [ Font.shadow
                         { offset = (0, 0)
                         , blur = 20
