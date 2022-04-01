@@ -90,7 +90,7 @@ blogView =
             ]
     in
         column attrs
-            [ el [Font.size 35, centerX] <| text "Soon"
+            [ el [Font.size 35, centerX] <| text "Coming Soon"
             , link 
                 [ Font.size 20
                  , centerY

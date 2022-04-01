@@ -13,6 +13,9 @@ import Element exposing (..)
 import Element.Background as Background
 import Element.Font as Font
 import Element.Region as Region
+import Simple.Animation as Animation exposing (Animation)
+import Simple.Animation.Animated as Animated
+import Simple.Animation.Property as AnimationProps
 
 type alias Model =
     ()
@@ -105,6 +108,43 @@ menuView =
             , menuItem "contact" "/contact"
             ]
 
+animatedUi : (List (Attribute msg) -> children -> Element msg) -> Animation -> List (Attribute msg) -> children -> Element msg
+animatedUi =
+    Animated.ui
+        { behindContent = behindContent
+        , htmlAttribute = htmlAttribute
+        , html = html
+        }
+
+
+animatedEl : Animation -> List (Attribute msg) -> Element msg -> Element msg
+animatedEl =
+    animatedUi el
+
+blink : Animation
+blink =
+    Animation.steps
+        { startAt = [AnimationProps.opacity 0]
+        , options = [Animation.loop]
+        }
+        [ Animation.step 500 [AnimationProps.opacity 1]
+        , Animation.wait 400
+        , Animation.step 500 [AnimationProps.opacity 0]
+        , Animation.wait 400
+        ]
+
+terminalCursor : Element Msg
+terminalCursor =
+    let
+        attrs =
+            [ width (px 15)
+            , height fill
+            , Background.color Colors.green
+            ]
+    in
+        animatedEl blink attrs none
+
+
 mainTitle : String -> Element Msg
 mainTitle str =
     let
@@ -116,16 +156,17 @@ mainTitle str =
                 , Font.size 43
                 , centerX
                 , centerY
+                , spacing 10
                 ]
     in
-    text txt |> el attrs
+        row attrs [text txt, terminalCursor]
 
 subtitleView : String -> Element Msg
 subtitleView txt =
     let
         attrs =
             [ Font.color Colors.green
-            , Font.size 16
+            , Font.size 17
             , centerX
             , padding 20
             ]
