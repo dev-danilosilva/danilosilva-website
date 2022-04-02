@@ -12,6 +12,8 @@ import Element exposing (..)
 import Element.Background as Background
 import Element.Font as Font
 import Lib.Colors as Colors
+import Lib.FontAwesome as FontAwesome
+
 
 type alias Model =
     ()
@@ -70,6 +72,24 @@ pageFont =
         , Font.sansSerif
         ]
 
+twitter : Element msg
+twitter =
+    FontAwesome.linkIcon {url = "https://www.twitter.com/dev_danilosilva", awesomeClasses = "fa-brands fa-twitter", color = Colors.twitterBlue}
+
+instagram : Element msg
+instagram =
+    FontAwesome.linkIcon {url = "https://www.instagram.com/danilos.silva/", awesomeClasses = "fa-brands fa-instagram", color = Colors.instaRed}
+
+
+linkedin : Element msg
+linkedin =
+    FontAwesome.linkIcon {url = "https://www.linkedin.com/in/danilosilva29/", awesomeClasses = "fa-brands fa-linkedin", color = Colors.linkedinBlue}
+
+email : Element msg
+email =
+    FontAwesome.linkIcon {url = "mailto:dev.danilosilva@gmail.com", awesomeClasses = "fa-solid fa-envelope", color = Colors.yellow}
+
+contactView : Element Msg
 contactView =
     let
         attrs =
@@ -81,7 +101,8 @@ contactView =
             ]
     in
         column attrs
-            [ el [Font.size 35, centerX] <| text "Coming Soon"
+            [ row [spacing 20, Font.size 60]
+                  [twitter, instagram, linkedin, email]
             , link 
                 [ Font.size 20
                 , centerX

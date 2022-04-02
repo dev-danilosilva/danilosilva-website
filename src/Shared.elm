@@ -99,5 +99,5 @@ view :
     -> { body : Html msg, title : String }
 view sharedData page model toMsg pageView =
     { body = Html.div [Attrs.class "main-container"] pageView.body
-    , title = pageView.title
+    , title = if pageView.title == "" then "Danilo Silva" else "Danilo Silva - " ++ pageView.title
     }
