@@ -1,4 +1,4 @@
-module Lib.Colors exposing (..)
+module Lib.Colors exposing (lightPurple, purple, green, white, black, offwhite)
 
 import Element exposing (Color, rgb255)
 
