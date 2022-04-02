@@ -97,14 +97,14 @@ contactView =
             , pageFont 
             , centerX
             , centerY
-            , spacing 15
+            , spacing 25
             ]
     in
         column attrs
             [ row [spacing 20, Font.size 60]
                   [twitter, instagram, linkedin, email]
             , link 
-                [ Font.size 20
+                [ Font.size 24
                 , centerX
                 , centerY
                 , mouseOver

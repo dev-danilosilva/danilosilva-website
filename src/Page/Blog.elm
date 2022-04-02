@@ -80,13 +80,13 @@ blogView =
             , pageFont 
             , centerX
             , centerY
-            , spacing 15
+            , spacing 25
             ]
     in
         column attrs
-            [ el [Font.size 35, centerX] <| text "Coming Soon"
+            [ el [Font.size 50, centerX] <| text "Coming Soon"
             , link 
-                [ Font.size 20
+                [ Font.size 24
                 , centerX
                 , centerY
                 , mouseOver
