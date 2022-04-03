@@ -89,6 +89,10 @@ email : Element msg
 email =
     FontAwesome.linkIcon {url = "mailto:dev.danilosilva@gmail.com", awesomeClasses = "fa-solid fa-envelope", color = Colors.yellow}
 
+github : Element msg
+github =
+    FontAwesome.linkIcon {url = "https://github.com/dev-danilosilva", awesomeClasses = "fa-brands fa-github", color = Colors.white}
+
 contactView : Element Msg
 contactView =
     let
@@ -99,10 +103,12 @@ contactView =
             , centerY
             , spacing 25
             ]
+        socialLinks =
+            [github, twitter, instagram, linkedin, email]
     in
         column attrs
             [ row [spacing 20, Font.size 60]
-                  [twitter, instagram, linkedin, email]
+                  socialLinks
             , link 
                 [ Font.size 24
                 , centerX
