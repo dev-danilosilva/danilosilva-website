@@ -1,37 +1,64 @@
-module Lib.Colors exposing ( lightPurple, purple, green
-                           , white, black, offwhite
-                           , twitterBlue, instaRed, linkedinBlue
-                           , yellow)
+module Lib.Colors exposing
+    ( black
+    , green
+    , instaRed
+    , lightPurple
+    , linkedinBlue
+    , offwhite
+    , purple
+    , twitterBlue
+    , white
+    , yellow
+    )
 
 import Element exposing (Color, rgb255)
 
 
 lightPurple : Color
-lightPurple = rgb255 72 8 97
+lightPurple =
+    rgb255 72 8 97
+
 
 purple : Color
-purple = rgb255 140 34 187
+purple =
+    rgb255 140 34 187
+
 
 green : Color
-green = rgb255 0 255 65
+green =
+    rgb255 0 255 65
+
 
 white : Color
-white = rgb255 255 255 255
+white =
+    rgb255 255 255 255
+
 
 black : Color
-black = rgb255 0 0 0
+black =
+    rgb255 0 0 0
+
 
 yellow : Color
-yellow = rgb255 255 224 48
+yellow =
+    rgb255 255 224 48
+
 
 offwhite : Color
-offwhite = rgb255 255 238 241
+offwhite =
+    rgb255 255 238 241
+
 
 twitterBlue : Color
-twitterBlue = rgb255 29 161 242
+twitterBlue =
+    rgb255 29 161 242
+
 
 instaRed : Color
-instaRed = rgb255 225 48 108
+instaRed =
+    rgb255 225 48 108
+
 
 linkedinBlue : Color
-linkedinBlue = rgb255 0 114 177
+linkedinBlue =
+    rgb255 0 114 177

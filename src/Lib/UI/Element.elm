@@ -13,6 +13,7 @@ animatedUi =
         , html = Element.html
         }
 
+
 animatedEl : Animation.Animation -> List (Element.Attribute msg) -> Element.Element msg -> Element.Element msg
 animatedEl =
     animatedUi Element.el

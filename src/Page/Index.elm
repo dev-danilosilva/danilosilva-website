@@ -1,20 +1,20 @@
 module Page.Index exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
+import Element exposing (..)
+import Element.Background as Background
+import Element.Font as Font
+import Element.Region as Region
 import Head
 import Head.Seo as Seo
+import Lib.Colors as Colors
+import Lib.UI.Animation as LibAnimation
+import Lib.UI.Element as LibElement
 import Page exposing (Page, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
 import Shared
 import View exposing (View)
-import Lib.Colors as Colors
-import Lib.UI.Animation as LibAnimation
-import Lib.UI.Element as LibElement
-import Element exposing (..)
-import Element.Background as Background
-import Element.Font as Font
-import Element.Region as Region
 
 
 type alias Model =
@@ -66,6 +66,7 @@ head static =
 type alias Data =
     ()
 
+
 terminalCursor : Element Msg
 terminalCursor =
     let
@@ -75,17 +76,19 @@ terminalCursor =
             , Background.color Colors.green
             ]
     in
-        LibElement.animatedEl LibAnimation.blink attrs none
+    LibElement.animatedEl LibAnimation.blink attrs none
+
 
 pageFont : Attribute Msg
 pageFont =
-    Font.family 
+    Font.family
         [ Font.external
             { url = "https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
             , name = "Share Tech Mono"
             }
         , Font.sansSerif
         ]
+
 
 menuItem : String -> String -> Element Msg
 menuItem txt url =
@@ -96,43 +99,50 @@ menuItem txt url =
             , padding 20
             , mouseOver
                 [ Font.shadow
-                    { offset = (0, 0)
+                    { offset = ( 0, 0 )
                     , blur = 20
                     , color = Colors.white
                     }
                 ]
             ]
     in
-        link attrs {url = url, label = text txt}
+    link attrs { url = url, label = text txt }
+
 
 menuView : Element Msg
 menuView =
     let
         attrs =
             [ centerX
-            , centerY]
-    in
-        row attrs
-            [ menuItem "about" "/about"
-            , menuItem "blog"  "/blog"
-            , menuItem "contact" "/contact"
+            , centerY
             ]
+    in
+    row attrs
+        [ menuItem "about" "/about"
+        , menuItem "blog" "/blog"
+        , menuItem "contact" "/contact"
+        ]
+
 
 mainTitle : String -> Element Msg
 mainTitle str =
     let
-        txt = String.toLower str
-        attrs = [ Font.semiBold
-                , Font.letterSpacing 5
-                , Font.color Colors.green
-                , Region.heading 1
-                , Font.size 43
-                , centerX
-                , centerY
-                , spacing 10
-                ]
+        txt =
+            String.toLower str
+
+        attrs =
+            [ Font.semiBold
+            , Font.letterSpacing 5
+            , Font.color Colors.green
+            , Region.heading 1
+            , Font.size 43
+            , centerX
+            , centerY
+            , spacing 10
+            ]
     in
-        row attrs [text txt, terminalCursor]
+    row attrs [ text txt, terminalCursor ]
+
 
 subtitleView : String -> Element Msg
 subtitleView txt =
@@ -156,13 +166,15 @@ presentationCardView =
             , padding 10
             , pageFont
             ]
+
         elements =
             [ subtitleView "Software Engineering, Functional Programming and Other Stuff"
             , mainTitle "~$ Danilo Silva"
             , menuView
             ]
     in
-        column attrs elements
+    column attrs elements
+
 
 view :
     Maybe PageUrl
@@ -173,6 +185,6 @@ view maybeUrl sharedModel static =
     { title = ""
     , body =
         presentationCardView
-        |> Element.layout [Background.color Colors.black]
-        |> List.singleton
+            |> Element.layout [ Background.color Colors.black ]
+            |> List.singleton
     }

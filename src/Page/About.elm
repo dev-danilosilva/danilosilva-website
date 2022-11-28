@@ -1,17 +1,18 @@
-module Page.About exposing (Model, Msg, Data, page)
+module Page.About exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
+import Element exposing (..)
+import Element.Background as Background
+import Element.Font as Font
 import Head
 import Head.Seo as Seo
+import Lib.Colors as Colors
 import Page exposing (Page, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
 import Shared
 import View exposing (View)
-import Element exposing (..)
-import Element.Background as Background
-import Element.Font as Font
-import Lib.Colors as Colors
+
 
 type alias Model =
     ()
@@ -20,8 +21,25 @@ type alias Model =
 type alias Msg =
     Never
 
+
 type alias RouteParams =
     {}
+
+
+descriptionText : String
+descriptionText =
+    """
+    My name is Danilo Silva, I'm a brazillian who loves functional programming and
+    programming languages. Nowadays, I work as a Software Engineer at Nubank, building software using
+    Clojure, Datomic, DynamoDB, Kafka and another amazing tecnologies.
+    """
+
+
+descriptionElement : Element msg
+descriptionElement =
+    paragraph [ paddingXY 100 0 ]
+        [ text descriptionText ]
+
 
 page : Page RouteParams Data
 page =
@@ -44,7 +62,7 @@ data =
     DataSource.succeed
         { intro = ""
         , professionalExperiences = []
-        , portfolioHighlights  = []
+        , portfolioHighlights = []
         }
 
 
@@ -68,10 +86,9 @@ head static =
         |> Seo.website
 
 
-
 pageFont : Attribute Msg
 pageFont =
-    Font.family 
+    Font.family
         [ Font.external
             { url = "https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
             , name = "Share Tech Mono"
@@ -79,36 +96,37 @@ pageFont =
         , Font.sansSerif
         ]
 
+
 aboutView : Element Msg
 aboutView =
     let
         attrs =
             [ Font.color Colors.green
-            , pageFont 
+            , pageFont
             , centerX
             , centerY
-            , spacing 25
+            , spacing 50
             ]
     in
-        column attrs
-            [ el [Font.size 50, centerX] <| text "Coming Soon"
-            , link 
-                [ Font.size 24
-                , centerX
-                , centerY
-                , mouseOver
-                    [ Font.shadow
-                        { offset = (0, 0)
-                        , blur = 20
-                        , color = Colors.white
-                        }
-                    ]
+    column attrs
+        [ el [ Font.size 20, centerX ] <| descriptionElement
+        , link
+            [ Font.size 24
+            , centerX
+            , centerY
+            , mouseOver
+                [ Font.shadow
+                    { offset = ( 0, 0 )
+                    , blur = 20
+                    , color = Colors.white
+                    }
                 ]
-                { url = "/"
-                , label = text "Go To Home"
-                }
             ]
-    
+            { url = "/"
+            , label = text "Go To Home"
+            }
+        ]
+
 
 view :
     Maybe PageUrl
@@ -119,6 +137,6 @@ view maybeUrl sharedModel static =
     { title = "About"
     , body =
         aboutView
-        |> Element.layout [Background.color Colors.black]
-        |> List.singleton
+            |> Element.layout [ Background.color Colors.black ]
+            |> List.singleton
     }

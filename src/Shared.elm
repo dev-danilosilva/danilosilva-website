@@ -3,13 +3,14 @@ module Shared exposing (Data, Model, Msg(..), SharedMsg(..), template)
 import Browser.Navigation
 import DataSource
 import Html exposing (Html)
+import Html.Attributes as Attrs
 import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
 import Path exposing (Path)
 import Route exposing (Route)
 import SharedTemplate exposing (SharedTemplate)
 import View exposing (View)
-import Html.Attributes as Attrs
+
 
 template : SharedTemplate Msg Model Data msg
 template =
@@ -98,6 +99,11 @@ view :
     -> View msg
     -> { body : Html msg, title : String }
 view sharedData page model toMsg pageView =
-    { body = Html.div [Attrs.class "main-container"] pageView.body
-    , title = if pageView.title == "" then "Danilo Silva" else "Danilo Silva - " ++ pageView.title
+    { body = Html.div [ Attrs.class "main-container" ] pageView.body
+    , title =
+        if pageView.title == "" then
+            "Danilo Silva"
+
+        else
+            "Danilo Silva - " ++ pageView.title
     }
