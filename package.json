@@ -1,5 +1,5 @@
 {
-  "name": "elm-pages-app",
+  "name": "danilosilva.pages",
   "scripts": {
     "postinstall": "elm-tooling install",
     "start": "elm-pages dev",
